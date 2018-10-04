@@ -25,34 +25,33 @@
 \*------------------------------------*/
 
 :root {
-    /* colors */
-    --color-alpha-xx-light: #DCEAFF;
-    --color-alpha-x-light: #81ADF0;
-    --color-alpha-light: #4F95FF;
-    --color-alpha: #3385FF;
-    --color-alpha-dark: #2E77E6;
-    --color-alpha-x-dark: #1B4186;
-    --color-neutral-xxxx-light: #F5F6FA;
-    --color-neutral-xxx-light: #E2E3E7;
-    --color-neutral-xx-light: #caccd4;
-    --color-neutral-x-light: #b5b6c0;
-    --color-neutral-light: #a0a1ad;
-    --color-neutral: #8b8c9a;
-    --color-neutral-dark: #757787;
-    --color-neutral-x-dark: #606274;
-    --color-neutral-xx-dark: #4b4c60;
-    --color-neutral-xxx-dark: #35374d;
-    --color-neutral-xxxx-dark: #20223a;
-
-    /* Shadows */
-    --shadow-color: #20223a15;
-    --inset-shadow: inset 0 1px 1px var(--shadow-color);
-
-    /* border radius */
-    --radius: 3px;
-
-    /* transitions */
-    --transition-alpha: .1s ease-out;
+	/* colors */
+	--color-alpha-xx-light: #DCEAFF;
+	--color-alpha-x-light: #81ADF0;
+	--color-alpha-light: #4F95FF;
+	--color-alpha: #3385FF;
+	--color-alpha-dark: #2E77E6;
+	--color-alpha-x-dark: #1B4186;
+	--color-neutral-xxxx-light: #F5F6FA;
+	--color-neutral-xxx-light: #E2E3E7;
+	--color-neutral-xx-light: #caccd4;
+	--color-neutral-x-light: #b5b6c0;
+	--color-neutral-light: #a0a1ad;
+	--color-neutral: #8b8c9a;
+	--color-neutral-dark: #757787;
+	--color-neutral-x-dark: #606274;
+	--color-neutral-xx-dark: #4b4c60;
+	--color-neutral-xxx-dark: #35374d;
+	--color-neutral-xxxx-dark: #20223a;
+	/* Shadows */
+	--shadow-color: #20223a15;
+	--focus-color: #3385FF30 ;
+	--inset-shadow: inset 0 1px 1px var(--shadow-color);
+	--focus-shadow: 0 0 0 3px var(--focus-color);
+	/* border radius */
+	--radius: 3px;
+	/* transitions */
+	--transition-alpha: .4s ease-out;
 }
 
 /*------------------------------------*\
@@ -64,16 +63,15 @@
     ---
     Global page styles + universal box-sizing:
 */
-
 html {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: "Inter UI Web", Helvetica, arial, sans-serif;
-    color: var(--color-neutral-xxxx-dark);
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: var(--color-neutral-xxxx-light);
+	font-size: 16px;
+	line-height: 1.5;
+	font-family: "Inter UI Web", Helvetica, arial, sans-serif;
+	color: var(--color-neutral-xxxx-dark);
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--color-neutral-xxxx-light);
 }
 
 *,
@@ -701,12 +699,14 @@ input::placeholder {
 
 */
 
-.c-option-list {
-
+.c-option-list 
+{
+	margin-bottom: 24px;
 }
 
-.c-option-list__item {
-
+.c-option-list__item 
+{
+	margin-bottom: 12px;
 }
 
 /*
@@ -714,37 +714,241 @@ input::placeholder {
     ---
     Custom checkboxes & radio buttons
 */
+.c-toggle__label {
+	display: flex;
+	align-items: center;
+}
+.c-toggle__input {
+	border: 1px solid var(--color-neutral-xxx-light);
+	border-radius: 15px;
+	width: 60px;
+	height: 30px;
+	display: block;
+	background-color: var(--color-neutral-xxx-light);
+	margin-right: 16px;
+	transition: all var(--transition-alpha);
+}
 
+.c-toggle__input:after {
+		border: 1px solid var(--color-alpha-xx-light);
+		border-radius: 100%;
+		content: ''; /* Has to be here to exist */
+		display: block;
+		width: 28px;
+		height: 28px;
+		align-self: center;
+		background-color: #fff;
+		/*margin: auto 1px auto 1px;*/
+		align-self: flex-start;
+		box-shadow: 0 1px 3px 1px rgba(0,0,0,0.2);
+		transition: all var(--transition-alpha);
+	}
+
+c-toggle__input--alternative {
+	border: 1px solid var(--color-neutral-xx-light);
+	border-radius: 15px;
+	width: 60px;
+	height: 30px;
+	display: block;
+	background-color: var(--color-neutral-xx-light);
+	margin-right: 16px;
+	transition: all var(--transition-alpha);
+}
+c-toggle__input--alternative:after {
+		border: 1px solid var(--color-alpha-xx-light);
+		border-radius: 100%;
+		content: ''; /* Has to be here to exist */
+		display: block;
+		width: 28px;
+		height: 28px;
+		align-self: center;
+		background-color: #fff;
+		/*margin: auto 1px auto 1px;*/
+		align-self: flex-start;
+		box-shadow: 0 1px 3px 1px rgba(0,0,0,0.2);
+		transition: all var(--transition-alpha);
+	}
+
+.c-toggle-list__item + .c-toggle-list__item {
+	border-top: 1px solid #000;
+	padding-top: 10px;
+}
+.c-toggle__label--inverted {
+	margin-right: 0;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+}
+.c-toggle__label--inverted toggle__input
+{
+	
+}
+
+.c-custom-select {
+	border: 1px solid black;
+	border-radius: 5px;
+	display: block;
+	align-items: center;
+	justify-content: space-between;
+	
+	width: 100%;
+	height: 50px;
+}
+.c-custom-select__input {
+	border: 1px solid var(--color-neutral-xxx-light);
+	border-radius: var(--radius);
+	box-shadow: var(--inset-shadow);
+	transition: border var(--transition-alpha);
+
+	display: inline-block;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	color: var(--color-neutral-xxxx-dark);
+	background-color: #fff;
+	font-family: inherit;
+	font-size: 16px;
+	line-height: 24px;
+	padding-left: 10px;
+	outline: 0px solid black;
+	height: 100%;
+}
+
+.c-custom-select__symbol {
+	display: inline-block;
+	pointer-events: none;
+	width: 24px;
+	height: 24px;
+	justify-content: flex-end;
+	margin-left: -35px;
+	margin-right: 0;
+	fill: var(--color-neutral-dark);
+	line-height: 50px;
+	vertical-align: middle;
+}
+
+.c-custom-input-option__symbol {
+	opacity: 0;
+	display: block;
+	margin: auto;
+	transition: all var(--transition-alpha);
+	transform: scale(0.5);
+}
+
+.c-custom-input-option {
+	display: flex;
+	width: 16px;
+	height: 16px;
+	border: 1px solid var(--color-neutral-xxx-light);
+	margin-right: 8px;
+	box-shadow: var(--inset-shadow);
+	align-items: center;
+	justify-content: center;
+}
+
+.c-custom-input-option--checkbox {
+	border-radius: var(--radius);
+}
+
+.c-custom-input-option--radio
+{
+	border-radius: 100%;
+}
+
+.c-custom-input-option-label
+{
+	display: flex;
+	align-items: center;
+}
+
+.c-custom-input-option--checkbox .c-custom-input-option__symbol 
+{
+	width:10px;
+	height:10px;
+	fill:var(--color-alpha);
+}
+
+.c-custom-input-option--radio .c-custom-input-option__symbol {
+	width: 6px;
+	height: 6px;
+	background-color: var(--color-alpha);
+	border-radius: 100%;
+}
 /* Hide the actual input with the class .o-hide-accessible */
-
 /* checked state */
-
 .c-custom-input-option-hidden:checked + .c-custom-input-option-label {
-    /*
-        Do magic stuff here, for example:
-        background-color: red;
-    */
+	/*Do magic stuff here, for example:*/
+	/*background-color: red;*/
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input, .c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input
+{
+	border-color: var(--color-alpha-x-light);
+	box-shadow: var(--focus-shadow);
+}
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input--alternative, .c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input--alternative {
+	border-color: transparent;
+	box-shadow: none;
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input--alternative:after, .c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input--alternative:after {
+	border-color: var(--color-alpha);
+	box-shadow: var(--focus-shadow);
+}
+
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input--alternative:after {
+	background-color: var(--color-alpha);
+	border-color: var(--color-alpha-x-dark);
+}
+
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input:after {
+	align-self: flex-end;
+	margin-left: 50%;
+}
+
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input {
+	
+	background-color: var(--color-alpha-x-light);
 }
 
 .c-custom-input-option-hidden:checked + .c-custom-input-option-label .c-custom-input-option__symbol {
-    /*
-        Do magic stuff here, for example:
-        fill: blue;
-    */
+	/*
+       Do magic stuff here, for example:*/
+	fill: blue;
+	opacity: 1;
+	transform: scale(1);
 }
+/* hover state */
+.c-custom-input-option-label:hover .c-custom-input-option
+{
+	border-color: var(--color-neutral-xx-light);
+}
+
+/* focus state */
+.c-custom-input-option-hidden:focus + .c-custom-input-option-label .c-custom-input-option 
+{
+	border: 1px solid var(--color-alpha-x-light);
+	box-shadow: var(--focus-shadow);
+}
+
+/* active state */
+.c-custom-input-option-label:active .c-custom-input-option 
+{
+	border: 1px solid var(--color-alpha-x-light);
+	box-shadow: var(--focus-shadow);
+}
+
 
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
-
 /*
     Utilities: color
     ---
     Utility classes to put specific colors onto elements
 */
-
 .u-color-neutral {
-    color: var(--color-neutral);
+	color: var(--color-neutral);
 }
 
 .u-color-neutral-dark {
