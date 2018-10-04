@@ -789,6 +789,7 @@ c-toggle__input--alternative:after {
 	display: block;
 	align-items: center;
 	justify-content: space-between;
+	position:relative;
 	
 	width: 100%;
 	height: 50px;
@@ -815,16 +816,13 @@ c-toggle__input--alternative:after {
 }
 
 .c-custom-select__symbol {
-	display: inline-block;
+	position:absolute;
 	pointer-events: none;
 	width: 24px;
 	height: 24px;
-	justify-content: flex-end;
-	margin-left: -35px;
-	margin-right: 0;
+	top:12px;
+	right:12px;
 	fill: var(--color-neutral-dark);
-	line-height: 50px;
-	vertical-align: middle;
 }
 
 .c-custom-input-option__symbol {
